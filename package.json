@@ -1,15 +1,22 @@
 {
-  "name": "chatgpt-pinner-vite",
+  "name": "chatgpt-pinner",
   "version": "1.0.0",
-  "description": "",
+  "description": "Browser extension to pin and bookmark ChatGPT conversations",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "clean": "rm -rf dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
+  "keywords": [
+    "chatgpt",
+    "extension",
+    "pinner",
+    "chrome-extension"
+  ],
+  "author": "Eren İşlek",
+  "license": "MIT",
+  "devDependencies": {
     "vite": "^6.3.5"
   }
 }
