@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Pinner",
+  "version": "1.0",
+  "description": "Pin and Bookmark your favorite ChatGPT conversations for quick access",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "128": "images/icon128.png"
+  },
+  "permissions": ["storage", "tabs", "scripting", "activeTab"],
+  "host_permissions": ["https://chatgpt.com/*"],
+
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatGPT Pinner</title>
+    <link rel="stylesheet" href="/popup.css" />
+  </head>
+  <body data-theme="light">
+    <!-- Default to light, JS will update -->
+    <div class="container">
+      <div class="header">
+        <div class="tabs">
+          <button id="bookmarksTab" class="tab-button active">Bookmarks</button>
+          <button id="chatsTab" class="tab-button">Pinned</button>
+        </div>
+        <button id="settingsButton" class="settings-button" title="Settings">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <div id="errorDisplay" class="error-message" style="display: none"></div>
+
+      <div id="bookmarksPage" class="tab-page active">
+        <h1>Bookmarked Chats</h1>
+        <div id="bookmarkedChats" class="chat-list">
+          <!-- Bookmarked chats will be displayed here -->
+        </div>
+        <div id="emptyBookmarkState" class="empty-state">
+          <p>No bookmarked chats yet.</p>
+          <p class="hint">
+            Open a chat and use the dropdown menu to bookmark it!
+          </p>
+        </div>
+      </div>
+
+      <div id="chatsPage" class="tab-page">
+        <h1>Pinned Chats</h1>
+        <div id="pinnedChats" class="chat-list">
+          <!-- Pinned chats will be displayed here -->
+        </div>
+        <div id="emptyPinnedState" class="empty-state">
+          <p>No pinned chats yet.</p>
+          <p class="hint">Open a chat and use the dropdown menu to pin it!</p>
+        </div>
+      </div>
+
+      <div id="settingsPage" class="tab-page">
+        <!-- Removed settings-header and closeSettings button -->
+        <h1>Settings</h1>
+        <div class="settings-item">
+          <label for="showSidebar">
+            <input type="checkbox" id="showSidebar" />
+            Show pinned chats in ChatGPT sidebar
+          </label>
+          <p class="settings-description">
+            When enabled, your pinned chats will appear in the ChatGPT sidebar
+            for quick access.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="/popup.js"></script>
+  </body>
+</html>

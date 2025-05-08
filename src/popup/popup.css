@@ -1,0 +1,356 @@
+body {
+  /* Light Theme (Default) */
+  --theme-background: #ffffff;
+  --theme-surface: #f9f9f9;
+  --theme-primary-text: #000000;
+  --theme-secondary-text: #575759;
+  --theme-border-light: #e7e8eb;
+  --theme-border-mid: #c4c6cb;
+  --theme-accent-blue: #2563eb;
+  --theme-accent-green: #10a37f; /* Existing accent */
+  --theme-button-primary-bg: #000000;
+  --theme-button-primary-text: #ffffff;
+  --theme-button-secondary-bg: #f0f0f0;
+  --theme-button-secondary-text: #333;
+  --theme-button-secondary-border: #ddd;
+  --theme-scrollbar-track: #f5f5f5;
+  --theme-scrollbar-thumb: #ccc;
+  --theme-scrollbar-thumb-hover: #aaa;
+  --theme-error-bg: #ffebee;
+  --theme-error-text: #c62828;
+  --theme-error-border: #ef9a9a;
+  --theme-danger-hover-bg: rgba(255, 0, 0, 0.1);
+  --theme-danger-hover-text: #ff3333;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--theme-background);
+  color: var(--theme-primary-text);
+  font-size: 14px;
+}
+
+body[data-theme="dark"] {
+  --theme-background: #212121; /* Updated */
+  --theme-surface: #171717; /* Updated */
+  --theme-primary-text: #f3f3f3; /* Updated */
+  --theme-secondary-text: #aaaaaa; /* Updated */
+  --theme-border-light: #2c2c2e; /* Keeping, review if it fits new bg/surface */
+  --theme-border-mid: #404044; /* Keeping, review if it fits new bg/surface */
+  /* --theme-accent-blue: #2563EB; /* Remains the same or can be different */
+  /* --theme-accent-green: #10a37f; /* Remains the same or can be different */
+  --theme-button-primary-bg: #f3f3f3; /* Updated to match new primary text for contrast */
+  --theme-button-primary-text: #171717; /* Updated to match new surface for contrast */
+  --theme-button-secondary-bg: #2b2b2c; /* Keeping, this is distinct from new surface */
+  --theme-button-secondary-text: #f3f3f3; /* Updated to match new primary text */
+  --theme-button-secondary-border: #404044; /* Keeping, review if it fits new bg/surface */
+  --theme-scrollbar-track: #171717; /* Updated to new surface color */
+  --theme-scrollbar-thumb: #404044; /* Keeping, review if it fits new bg/surface */
+  --theme-scrollbar-thumb-hover: #575759; /* Keeping, review if it fits new bg/surface */
+  --theme-error-bg: #2c1d1d;
+  --theme-error-text: #f48a8a;
+  --theme-error-border: #7c2e2e;
+  --theme-danger-hover-bg: rgba(255, 82, 82, 0.15);
+  --theme-danger-hover-text: #ff5252;
+}
+
+.container {
+  width: 320px;
+  min-height: 260px;
+  max-height: 500px;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header with tabs and settings button */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.tabs {
+  display: flex;
+  flex-grow: 1;
+  border-bottom: 1px solid var(--theme-border-light);
+}
+
+.tab-button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--theme-secondary-text); /* Inactive tab color */
+  position: relative;
+  transition: color 0.2s;
+}
+
+.tab-button:hover {
+  color: var(--theme-primary-text); /* Hover color can be primary text */
+}
+
+.tab-button.active {
+  color: var(--theme-primary-text); /* Active tab color */
+  font-weight: 600;
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background-color: var(--theme-primary-text); /* Active tab underline color */
+}
+
+/* Settings button */
+.settings-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+  color: var(--theme-secondary-text);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.settings-button:hover {
+  background-color: var(--theme-surface); /* Use surface for subtle hover */
+  color: var(
+    --theme-primary-text
+  ); /* Changed from accent-green to primary-text for consistency */
+}
+
+h1 {
+  margin: 0 0 16px 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: var(
+    --theme-primary-text
+  ); /* Changed from accent-green to primary-text */
+  width: 100%;
+}
+
+/* Settings page specific h1 styling if needed, as it's no longer in settings-header */
+#settingsPage h1 {
+  margin-top: 0; /* Example: ensure no extra top margin if header was affecting it */
+  margin-bottom: 24px; /* Example: Adjust spacing after removing header */
+}
+
+/* Fixed height, scrollable chat list */
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 350px; /* Fixed height */
+  overflow-y: auto;
+  padding-right: 4px; /* Prevent content from touching scrollbar */
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--theme-surface);
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--theme-border-light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Shadow might need theme adjustment if too strong/weak */
+  transition: background-color 0.2s ease;
+  min-height: 20px;
+}
+
+.chat-item:hover {
+  background-color: var(
+    --theme-background
+  ); /* Or a slightly different surface color */
+}
+
+.chat-link {
+  flex-grow: 1;
+  text-decoration: none;
+  color: var(--theme-primary-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 8px;
+}
+
+.chat-link:hover {
+  color: var(--theme-accent-blue);
+}
+
+/* Button container inside chat item */
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.unpin-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+  color: var(--theme-secondary-text);
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.unpin-button:hover {
+  background-color: var(--theme-danger-hover-bg);
+  color: var(--theme-danger-hover-text);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 0;
+  color: var(--theme-secondary-text);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--theme-secondary-text); /* Or a lighter shade of secondary */
+  margin-top: 8px;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-scrollbar-thumb-hover);
+}
+
+.tab-page {
+  display: none;
+}
+
+.tab-page.active {
+  display: block;
+}
+
+/* Settings styling */
+.settings-item {
+  background-color: var(--theme-surface);
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--theme-border-light);
+  margin-bottom: 12px;
+}
+
+.settings-item label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-bottom: 6px;
+  cursor: pointer;
+  color: var(--theme-primary-text); /* Ensure label text color is themed */
+}
+
+.settings-item input[type="checkbox"] {
+  margin-right: 10px;
+  /* Basic theming for checkbox accent */
+  accent-color: var(
+    --theme-primary-text
+  ); /* Changed from accent-green to primary-text */
+}
+
+.settings-description {
+  margin: 6px 0 0 24px;
+  font-size: 12px;
+  color: var(--theme-secondary-text);
+}
+
+/* Action button styles for "Move to" functionality */
+.action-button {
+  background-color: var(--theme-button-secondary-bg);
+  border: 1px solid var(--theme-button-secondary-border);
+  border-radius: 4px;
+  color: var(--theme-button-secondary-text);
+  cursor: pointer;
+  /* font-size: 12px; */ /* Not needed if only icon */
+  padding: 4px; /* Adjusted for icon */
+  margin-left: 6px;
+  transition: background-color 0.2s;
+  display: flex; /* For centering icon if needed */
+  align-items: center; /* For centering icon if needed */
+  justify-content: center; /* For centering icon if needed */
+  line-height: 1; /* Ensure consistent height */
+}
+
+.action-button svg {
+  display: block; /* Prevents extra space below icon */
+}
+
+.action-button:hover {
+  background-color: var(
+    --theme-surface
+  ); /* Or a slightly darker/lighter secondary bg */
+}
+
+.action-button.bookmark {
+  color: var(--theme-accent-blue); /* Use accent blue for bookmark action */
+}
+
+.action-button.pin {
+  color: var(
+    --theme-primary-text
+  ); /* Use primary text for pin action, was accent-green */
+}
+
+/* Counter labels */
+.counter-label {
+  background-color: var(--theme-surface); /* Use surface for background */
+  border-radius: 10px;
+  font-size: 10px;
+  padding: 2px 6px;
+  margin-left: 5px;
+  color: var(--theme-secondary-text);
+  border: 1px solid var(--theme-border-light); /* Add a subtle border */
+}
+
+/* Max limits notice */
+.limit-notice {
+  font-size: 11px;
+  color: var(--theme-secondary-text);
+  text-align: right;
+  margin-top: 2px;
+  margin-bottom: 6px;
+  font-style: italic;
+}
+
+/* Error message styling */
+.error-message {
+  background-color: var(--theme-error-bg);
+  color: var(--theme-error-text);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--theme-error-border);
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: center;
+}
